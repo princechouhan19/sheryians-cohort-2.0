@@ -1,0 +1,26 @@
+Math functions and Problems:
+—-Math.abs()
+—-Math.ceil()
+—-Math.floor()
+—-Math.round()
+—-Math trunc() // remove the decimal part
+—-Math.pow()
+—-Math.sqrt()
+—-Math.cbrt()
+—-Math.max()
+—-Math.min()
+—-Math.random()
+--toFixed()
+
+->Math problems :
+
+Q 6. calculate compound interest
+     CP =P(1+r/100)^(t) - P
+     Example : input = P=10000,r=5, t=3 ,
+     output = 1576.25
+
+Q 7. Generate OTP
+
+Q 8. Area of triangle by heron's formula
+
+Q 9. Circumference of circle

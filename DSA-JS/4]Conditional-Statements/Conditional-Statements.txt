@@ -1,0 +1,7 @@
+1. Conditional Statements
+
+- Understanding Conditional Statements
+- Types of Conditional Statements `if` , `if-else` , `if-else if` , `switch`
+- Making decisions in a program based on inputs or variables.
+- Validating user data or input forms.
+- Creating interactive menus or options in applications.
