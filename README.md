@@ -17,7 +17,7 @@ Sheryians Cohort 2.0 is a **comprehensive, project-based learning experience** t
 - AI & Generative AI applications  
 - Aptitude & Reasoning preparation  
 - Real-world projects and portfolio work  
-- Career guidance and placement support :contentReference[oaicite:1]{index=1}
+- Career guidance and placement support
 
 ---
 
@@ -30,28 +30,28 @@ The curriculum includes the following major modules:
 - Responsive Design and Browser APIs  
 - **React.js & Advanced Frontend**: Components, state management, routing, Framer Motion & GSAP  
 - **Backend Fundamentals**: Node.js, Express, REST API principles, MongoDB  
-- Deployment, WebSockets, Caching, and Authentication :contentReference[oaicite:2]{index=2}
+- Deployment, WebSockets, Caching, and Authentication 
 
 ### Data Structures & Algorithms (DSA)
 - **Core Concepts**: Control flow, loops, recursion, time and space complexity  
 - **Structures Covered**: Arrays, Linked Lists, Stacks & Queues, Trees, Hashing  
 - **Algorithms**: Sorting, Searching, Two-pointer techniques, Dynamic Programming  
 - **Advanced Topics**: Graphs, Segment Trees, Tries  
-- OOP with JavaScript classes :contentReference[oaicite:3]{index=3}
+- OOP with JavaScript classes 
 
 ### Generative AI & Applications
 - Overview of Generative AI tools  
 - Building AI-powered applications (LangChain, multi-agent systems)  
-- Project work: Virtual Interviewer, Resume Reviewer, and more :contentReference[oaicite:4]{index=4}
+- Project work: Virtual Interviewer, Resume Reviewer, and more
 
 ### Aptitude & Reasoning
 - **Quantitative Aptitude**: Percentage, Simple/Compound Interest, Speed/Time, Probability, AP/GP  
 - **Logical Reasoning**: Blood relations, series, syllogisms  
-- **Verbal Reasoning**: Sentence ordering, error detection, improvement questions :contentReference[oaicite:5]{index=5}
+- **Verbal Reasoning**: Sentence ordering, error detection, improvement questions 
 
 ### Version Control & Professional Skills
 - Git & GitHub fundamentals  
-- Branching and collaboration workflow :contentReference[oaicite:6]{index=6}
+- Branching and collaboration workflow
 
 ---
 
@@ -78,7 +78,7 @@ In this repository, you will find:
 - Tiny Cats: AI creative app
 
 **Capstone Project:**
-- **Sync Space** – AI-powered virtual co-working platform with autonomous agents :contentReference[oaicite:7]{index=7}
+- **Sync Space** – AI-powered virtual co-working platform with autonomous agents
 
 ---
 
@@ -93,10 +93,11 @@ In this repository, you will find:
 
 ## Acknowledgements
 
-Thanks to all instructors and mentors at Sheryians Coding School for their guidance and real-world project mentorship throughout Cohort 2.0. :contentReference[oaicite:8]{index=8}
+Thanks to all instructors and mentors at Sheryians Coding School for their guidance and real-world project mentorship throughout Cohort 2.0.
 
 ---
 
 ## License
 
 This repository is for personal learning and sharing purposes.
+
