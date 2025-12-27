@@ -27,3 +27,11 @@ Q 15. Shop discount - Description on Graphic ESL
 Q 16. Bijli Bill - Description on Graphic 
 
 Q 17. Counting number of days in a given month of a year 
+
+
+
+—Switch Case
+
+Q 22. using Switch (Check Consonant or Vowel using Switch)
+
+Q 23. Write a program to calculate the area of a circle, rectangle, and triangle using a switch statement .
