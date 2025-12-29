@@ -1,29 +1,51 @@
-### 2. Loops, Nested Loops, Pattern Programming
+## ### 2. Loops, Nested Loops, Pattern Programming
 
-- [x] Types of loops :- Loops are used to execute a block of code repeatedly based on a condition.  
-  **Entry control loops** check the condition before executing the loop body. If the condition is false initially, the loop body will not execute at all. Examples of entry control loops are `for` and `while` loops.  
-  **Exit control loops** execute the loop body first and then check the condition. This guarantees that the loop body executes at least once, even if the condition is false. The `do-while` loop is an example of an exit control loop.
+### ✅ Core Concepts
 
-- [x] Understanding the use of loops
-- [x] `for` loop
-- [x] `while` loop
-- [x] `do-while` loop
-- [ ] Understanding the use of nested loops
-- [ ] Learning pattern programming: `pyramid patterns`, `right-angled triangles`, and `inverted triangles`
-- [ ] Understanding control flow statements: `break` and `continue`
-- [ ] Learning how to set correct conditions to avoid infinite loops
-- [ ] Understanding how to optimize nested loops for better performance and reduced time complexity
+- [x] **Types of Loops**  
+  Loops are used to execute a block of code repeatedly based on a condition.
 
+  - **Entry Control Loops**  
+    These loops check the condition **before** executing the loop body.  
+    If the condition is false initially, the loop body will not execute.  
+    **Examples:** `for`, `while`
 
-Q 17. Accept an integer and Print hello world n times [x]
-Q 18. Print natural number up to n. [x]
-Q 19. Reverse for loop. Print n to 1. [x] 
-Q 20. Take a number as input and print its table [x]
-5*1=5
-5*2=10...up to 10 terms 
-Q 21. Sum up to n terms. [x]
-Q 22. Factorial of a number [x]
-Q 23. Print the sum of all even & odd numbers in a range separately . [x]
-Q 24. Print all the factors of a number. 
-Q 25. Check if the number is Prime or not.
-Q 26. Write a program to take two inputs a,b % find the 
+  - **Exit Control Loops**  
+    These loops execute the loop body first and then check the condition.  
+    The loop body executes at least once.  
+    **Example:** `do-while`
+
+- [x] Understanding the use of loops  
+- [x] `for` loop  
+- [x] `while` loop  
+- [x] `do-while` loop  
+
+---
+
+### 🔁 Advanced Looping Concepts
+
+- [ ] Understanding the use of **nested loops**
+- [ ] Learning **pattern programming**
+  - Pyramid patterns  
+  - Right-angled triangles  
+  - Inverted triangles  
+- [ ] Understanding **control flow statements**
+  - `break`
+  - `continue`
+- [ ] Learning how to set correct conditions to avoid **infinite loops**
+- [ ] Understanding how to optimize **nested loops** for better performance and reduced time complexity
+
+---
+
+## 📝 Practice Questions (Loop-Based)
+
+- [x] **Q17.** Accept an integer and print **"Hello World"** `n` times  
+- [x] **Q18.** Print natural numbers up to `n`  
+- [x] **Q19.** Reverse loop: print numbers from `n` to `1`  
+- [x] **Q20.** Take a number as input and print its multiplication table  
+- [x] **Q21.** Find the sum of numbers up to `n` terms  
+- [x] **Q22.** Find the factorial of a number  
+- [x] **Q23.** Print the sum of all even and odd numbers in a given range separately  
+- [x] **Q24.** Print all the factors of a number  
+- [] **Q25.** Check whether a number is **Prime** or **Not Prime**  
+- [ ] **Q26.** Write a program to take two inputs `a` and `b` and find the value of `a ^ b` 
