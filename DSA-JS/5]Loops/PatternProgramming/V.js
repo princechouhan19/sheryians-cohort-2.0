@@ -8,19 +8,17 @@
 let prompt = require('prompt-sync')();
 let n = Number(prompt("Enter a Number : "));
 
-for (let i = 1; i <= n; i++) {
-
-    if (i > n - i + 1) break;
-
-    for (let j = 1; j <= n; j++) {
-        if (j == i || i + j == n + 1) {
-            process.stdout.write("* ");
-        } else {
-            process.stdout.write("  ");
+// Outer loop for rows
+    for (let i = 1; i <= n; i++) { 
+        // Loop for leading spaces
+        for (let j = 1; j < 2*n; j++) { 
+            if(i == j || i+j == 2*n)
+               process.stdout.write("*"); 
+            else
+              process.stdout.write(" "); 
         }
+        console.log();
     }
-    console.log("");
-}
 
 // j == i  → prints the left diagonal
 //           because column number equals row number
