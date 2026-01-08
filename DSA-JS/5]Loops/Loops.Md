@@ -1,4 +1,4 @@
-## ### 2. Loops, Nested Loops, Pattern Programming
+## Loops, Nested Loops, Pattern Programming
 
 ### ✅ Core Concepts
 
@@ -24,16 +24,16 @@
 
 ### 🔁 Advanced Looping Concepts
 
-- [ ] Understanding the use of **nested loops**
-- [ ] Learning **pattern programming**
+- [x] Understanding the use of **nested loops**
+- [x] Learning **pattern programming**
   - Pyramid patterns  
   - Right-angled triangles  
   - Inverted triangles  
-- [ ] Understanding **control flow statements**
+- [x] Understanding **control flow statements**
   - `break`
   - `continue`
-- [ ] Learning how to set correct conditions to avoid **infinite loops**
-- [ ] Understanding how to optimize **nested loops** for better performance and reduced time complexity
+- [x] Learning how to set correct conditions to avoid **infinite loops**
+- [x] Understanding how to optimize **nested loops** for better performance and reduced time complexity
 
 ---
 
