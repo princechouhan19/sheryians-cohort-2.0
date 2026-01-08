@@ -1,2 +1,19 @@
+# Dependencies
 node_modules/
+
+# Logs
 npm-debug.log
+yarn-debug.log*
+yarn-error.log*
+
+# Notes and documents (DO NOT UPLOAD)
+Notes/
+*.pdf
+*.docx
+*.pptx
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
