@@ -149,9 +149,13 @@ console.log("Array elements are:", arr);
 - [x] **Q43.** Sum of array's elements  
 - [x] **Q44.** Max element from array  
 - [x] **Q45.** Second max element from array  
-- [ ] **Q46.** Reverse the array  
-- [ ] **Q47.** All zeroes to left and all ones to right  
-- [ ] **Q48.** Array left rotation by 1  
+- [x] **Q46.** Reverse the array  
+- [x] **Q47.** All zeroes to left and all ones to right 
+- [x] **Q.** Move all the negative elements on the left side and positive elements on the right side O(n).
+- [x] **Q48.** Array left rotation by 1
+- [x] **Q49.** Array left rotation by K elements
+- [x] **Q** Print the count of subarrays whose sum is equal to the target. (Ex - {1,2,3,7,5} , T = 12 O/P - 2 - [ {2,3,7}, {7,5}] - Both subarrays have sum 12)
+
 
 ---
 
