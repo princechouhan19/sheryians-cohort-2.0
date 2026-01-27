@@ -34,3 +34,9 @@
 - [x] **Q56.** Accept a string and print it in reverse order
 - [x] **Q57.** Palindromic String using Two pointer algorithm (hint: Array reverse algo)
 - [x] **Q58.** Toggle each alphabet of String (In - `AcgDfD` Output - `aCGdFd`)
+- [x] **Q59.** Take an array of strings words and a String Prefix. Print the number of strings 1 in words that contain pref as a prefix. 
+Example - Input: words =["pay", "attention", "practice", "attend"], pref = "at"
+Output :- 2
+- [x] **Q60.** Capitalize first & last character of each word in the sentence and print the new sentence Ex :  Hello bhai Kaise ho a
+Output : HellO0 Bhal KaisfE HO A
+- [x] **Q61.** Accept a string and print the frequency of each character
