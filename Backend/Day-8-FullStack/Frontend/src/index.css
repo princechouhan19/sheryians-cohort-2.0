@@ -1,30 +1,183 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
- html,body,#root{
+
+html, body, #root {
   height: 100%;
   width: 100%;
- }
-
-html{
-  background-color: #212121;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.note{
-  background-color: #494949;
-  padding : 1rem;
-  border-radius: 0.5rem;
-  color: #fff;
-  max-width: 20rem;
-  margin: 1rem;
+html {
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 12% 14%, rgba(16, 185, 129, 0.12), transparent 32%),
+    radial-gradient(circle at 85% 0%, rgba(245, 158, 11, 0.14), transparent 30%),
+    linear-gradient(155deg, #0b1220 0%, #101a2f 42%, #122032 100%);
+  color: #e6edf5;
 }
-.notes{
+
+body {
+  min-height: 100%;
+}
+
+#root {
+  padding: 2.25rem clamp(1rem, 4vw, 3rem);
+}
+
+/* Notes Container */
+.notes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  padding-top: 1.25rem;
+}
+
+/* Individual Note Card */
+.note {
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 18px;
+  padding: 1.1rem;
+  min-height: 200px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 1rem;
-  padding-inline: 3rem;
+  flex-direction: column;
+  gap: 0.85rem;
+  box-shadow: 0 12px 28px rgba(2, 8, 23, 0.36);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.note:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(2, 8, 23, 0.5);
+  border-color: rgba(74, 222, 128, 0.45);
+}
+
+.note h1 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #f8fafc;
+  line-height: 1.35;
+  word-break: break-word;
+}
+
+/* Note Text */
+.note p {
+  margin-bottom: auto;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #c9d6e4;
+  word-break: break-word;
+}
+
+/* Edit Input */
+.note input {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(15, 23, 42, 0.45);
+  color: #f8fafc;
+  outline: none;
+}
+
+.note input:focus {
+  border-color: rgba(74, 222, 128, 0.8);
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.2);
+}
+
+.Buttons {
+  display: flex;
+  gap: 0.55rem;
+  margin-top: auto;
+}
+
+/* Buttons */
+.note button,
+.note-create-form button {
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 0.85rem;
+  font-weight: 500;
+  color: #f8fafc;
+  cursor: pointer;
+  transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
+}
+
+.note button:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.06);
+}
+
+.Update {
+  background: linear-gradient(130deg, #1d4ed8, #2563eb);
+}
+
+.Delete {
+  background: linear-gradient(130deg, #dc2626, #b91c1c);
+}
+
+.note button:not(.Update):not(.Delete) {
+  align-self: flex-start;
+  background: linear-gradient(130deg, #059669, #10b981);
+}
+
+/* Create Form */
+.note-create-form {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr auto;
+  gap: 0.8rem;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  border-radius: 16px;
+  padding: 0.95rem;
+  box-shadow: 0 8px 20px rgba(2, 8, 23, 0.28);
+}
+
+/* Input Field */
+.note-create-form input {
+  min-width: 0;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(15, 23, 42, 0.5);
+  color: #f8fafc;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.note-create-form input:focus {
+  border-color: #34d399;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.2);
+}
+
+.note-create-form button {
+  padding: 0.65rem 1.1rem;
+  background: linear-gradient(125deg, #0ea5e9, #2563eb);
+  font-weight: 600;
+}
+
+.note-create-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(37, 99, 235, 0.35);
+}
+
+@media (max-width: 900px) {
+  #root {
+    padding: 1.25rem 0.95rem 1.4rem;
+  }
+
+  .note-create-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .notes {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
 }
