@@ -9,7 +9,7 @@ function App() {
 
 
   function fetchNotes() {
-    axios.get("http://localhost:3000/api/notes")
+    axios.get("https://sheryians-cohort-2-0.onrender.com/api/notes")
       .then(res => {
         setNotes(res.data.notes)
       })
@@ -37,7 +37,7 @@ function App() {
 
   //Delete Note By id
   function handleDeleteNote(noteId) {
-    axios.delete("http://localhost:3000/api/notes/" + noteId)
+    axios.delete("https://sheryians-cohort-2-0.onrender.com/api/notes/" + noteId)
       .then(res => {
         console.log(res.data)
         fetchNotes()
@@ -47,7 +47,7 @@ function App() {
   //Update note by id
   function handelUpdateNote(noteId) {
 
-    axios.patch("http://localhost:3000/api/notes/" + noteId, {
+    axios.patch("https://sheryians-cohort-2-0.onrender.com/api/notes/" + noteId, {
       description: updatedDescription
     })
       .then(res => {
