@@ -1,5 +1,5 @@
 {
-  "name": "day-7-crud-operations",
+  "name": "Day-07"-crud-operations",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -17,3 +17,4 @@
     "mongoose": "^9.1.5"
   }
 }
+

@@ -31,7 +31,7 @@ A comprehensive Full Stack application for managing notes, built with the MERN s
 ## 📂 Project Structure
 
 ```bash
-Backend/Day-8-FullStack/
+Backend/Day-08-FullStack/
 │
 ├── Backend/          # Node.js & Express Server
 │   ├── src/          # Source files (models, routes, logic)
@@ -57,7 +57,7 @@ Follow these steps to set up the project locally.
 
 ```bash
 git clone <repository_url>
-cd Backend/Day-8-FullStack
+cd Backend/Day-08-FullStack
 ```
 
 ### 2. Backend Setup

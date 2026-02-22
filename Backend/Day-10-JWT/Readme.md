@@ -1,8 +1,6 @@
 ﻿# Day 10 - JWT (Register Flow)
 
-```md
-![JWT Flow](./Diagram.svg)
-```
+![JWT Flow](./src/Diagram.svg)
 
 This project covers JWT basics using Node.js, Express, MongoDB, and cookies.
 

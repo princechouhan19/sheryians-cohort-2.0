@@ -1,11 +1,10 @@
 {
-  "name": "day-5-database",
+  "name": "Day-02",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
@@ -15,3 +14,4 @@
     "express": "^5.2.1"
   }
 }
+

@@ -1,18 +1,18 @@
 {
-  "name": "day-6-database",
+  "name": "Day-03",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "Server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx nodemon server.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "express": "^5.2.1",
-    "mongoose": "^9.1.5"
+    "express": "^5.2.1"
   }
 }
+

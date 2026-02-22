@@ -69,13 +69,13 @@ Here is a summary of the modules I have completed so far, along with direct link
 
 A comprehensive journey through backend web development, covering everything from setting up basic servers to building extensive full-stack applications.
 
-- **[Day 1: Introduction](./Backend/Day-1)**: Basic setup and introduction to backend concepts.
-- **[Day 2: Programming Server](./Backend/Day-2-Programming-Server)**: Setting up and programming basic node/express servers.
-- **[Day 3: APIs](./Backend/Day-3-APIs)**: Understanding Application Programming Interfaces and routing.
-- **[Day 4: REST API](./Backend/Day-4-REST-API)**: Building and working with RESTful architecture.
-- **[Day 5 & 6: Database](./Backend/Day-5-Database)**: Database fundamentals, schema design, and persistence.
-- **[Day 7: CRUD Operations](./Backend/Day-7-CRUD-Operations)**: Implementing Create, Read, Update, and Delete data flows.
-- **[Day 8: FullStack Project](./Backend/Day-8-FullStack)**: Combining frontend and backend components into a cohesive full-stack application.
+- **[Day 1: Introduction](./Backend/Day-01)**: Basic setup and introduction to backend concepts.
+- **[Day 2: Programming Server](./Backend/Day-02-Programming-Server)**: Setting up and programming basic node/express servers.
+- **[Day 3: APIs](./Backend/Day-03-APIs)**: Understanding Application Programming Interfaces and routing.
+- **[Day 4: REST API](./Backend/Day-04-REST-API)**: Building and working with RESTful architecture.
+- **[Day 5 & 6: Database](./Backend/Day-05-Database)**: Database fundamentals, schema design, and persistence.
+- **[Day 7: CRUD Operations](./Backend/Day-07-CRUD-Operations)**: Implementing Create, Read, Update, and Delete data flows.
+- **[Day 8: FullStack Project](./Backend/Day-08-FullStack)**: Combining frontend and backend components into a cohesive full-stack application.
 
 ### 🧠 [Data Structures & Algorithms (JavaScript)](./DSA-JS)
 

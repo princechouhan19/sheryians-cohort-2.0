@@ -1,5 +1,5 @@
 {
-  "name": "day-10-jwt",
+  "name": "Day-01"0-jwt",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -19,3 +19,4 @@
     "mongoose": "^9.2.1"
   }
 }
+
