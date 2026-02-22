@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 400" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #2b2d31; }
+      .text-main { fill: #ffffff; font-family: 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .text-bold { font-weight: bold; }
+      .stroke-main { stroke: #ffffff; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .stroke-light { stroke: #ffffff; stroke-width: 1.5; fill: none; }
+      .fill-main { fill: #ffffff; }
+      .fill-dark { fill: #2b2d31; }
+    </style>
+    
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <polyline points="0,1 6,5 0,9" class="stroke-main" />
+    </marker>
+  </defs>
+
+  <rect width="100%" height="100%" class="bg" />
+
+  <rect x="20" y="205" width="80" height="30" rx="6" class="stroke-main fill-dark" />
+  <text x="60" y="225" text-anchor="middle" class="text-main" font-size="14">Token-C</text>
+  <path d="M 100 220 L 120 220" class="stroke-main" />
+
+  <g transform="translate(60, 275)">
+    <circle cx="0" cy="-10" r="14" class="stroke-main fill-dark" />
+    <path d="M 14 -10 A 14 14 0 0 1 -14 -10" class="stroke-main" fill="#ffffff" opacity="0.1" />
+    <circle cx="-5" cy="-15" r="1.5" fill="#ffffff" />
+    <circle cx="5" cy="-16" r="2" fill="#ffffff" />
+    <circle cx="-3" cy="-4" r="2" fill="#ffffff" />
+    <circle cx="6" cy="-7" r="1.5" fill="#ffffff" />
+    <circle cx="1" cy="-10" r="2" fill="#ffffff" />
+    <text x="0" y="15" text-anchor="middle" class="text-main text-bold" font-size="12">Saved in Cookies</text>
+  </g>
+
+  <g transform="translate(150, 190)">
+    <circle cx="0" cy="-20" r="18" class="stroke-main" />
+    <path d="M -5 -38 L -10 -45 M 0 -38 L 0 -47 M 5 -38 L 10 -45" class="stroke-main" />
+    <path d="M -8 -25 Q -5 -30 -2 -25" class="stroke-main" />
+    <path d="M 2 -25 Q 5 -30 8 -25" class="stroke-main" />
+    <path d="M -6 -15 Q 0 -8 6 -15" class="stroke-main" />
+    <path d="M -20 18 Q 0 -5 20 18" class="stroke-main" />
+    <path d="M -30 18 L 30 18 L 30 45 L -30 45 Z" class="stroke-main fill-dark" />
+    <path d="M -35 45 L 35 45 L 35 50 L -35 50 Z" class="stroke-main fill-dark" />
+    <circle cx="0" cy="31" r="3" class="stroke-main" />
+  </g>
+  
+  <text x="150" y="275" text-anchor="middle" class="text-main text-bold" font-size="22">C</text>
+
+
+  <g transform="translate(720, 180)">
+    <path d="M -30 -10 L 0 -30 L 30 -10 L 0 10 Z" class="stroke-main fill-dark" />
+    <path d="M -30 -10 L 0 10 L 0 30 L -30 10 Z" class="stroke-main fill-dark" />
+    <path d="M 0 10 L 30 -10 L 30 10 L 0 30 Z" class="stroke-main fill-dark" />
+    <line x1="10" y1="5" x2="20" y2="-2" class="stroke-light" />
+    
+    <path d="M -30 15 L 0 35 L 0 55 L -30 35 Z" class="stroke-main fill-dark" />
+    <path d="M 0 35 L 30 15 L 30 35 L 0 55 Z" class="stroke-main fill-dark" />
+    <line x1="10" y1="30" x2="20" y2="23" class="stroke-light" />
+    
+    <path d="M -30 40 L 0 60 L 0 80 L -30 60 Z" class="stroke-main fill-dark" />
+    <path d="M 0 60 L 30 40 L 30 60 L 0 80 Z" class="stroke-main fill-dark" />
+    <line x1="10" y1="55" x2="20" y2="48" class="stroke-light" />
+  </g>
+
+  <text x="770" y="195" class="text-main text-bold" font-size="14">1. user ka data save krna DB me</text>
+  <text x="770" y="220" class="text-main text-bold" font-size="14">2. Token create user ke liye, user data</text>
+  <text x="770" y="240" class="text-main text-bold" font-size="14">ke sath</text>
+  
+  <text x="720" y="315" text-anchor="middle" class="text-main" font-size="14">signature with a secret name JWT_SECRET</text>
+
+
+  <path d="M 180 180 Q 450 70 680 170" class="stroke-main" marker-end="url(#arrow)" />
+
+  <text x="450" y="45" text-anchor="middle" class="text-main text-bold" font-size="20">register</text>
+  <text x="365" y="80" class="text-main text-bold" font-size="14">req.body</text>
+  
+  <g class="text-main text-bold" font-size="14" text-anchor="middle">
+    <text x="450" y="80">{</text>
+    <text x="450" y="100">name: c_test;</text>
+    <text x="450" y="120">email:c_test@test.com</text>
+    <text x="450" y="140">password:c_password_test</text>
+    <text x="450" y="160">}</text>
+  </g>
+
+  <path d="M 195 220 L 680 220" class="stroke-main" marker-end="url(#arrow)" />
+  
+  <rect x="490" y="205" width="100" height="30" rx="6" class="stroke-main fill-dark" />
+  <text x="540" y="225" text-anchor="middle" class="text-main text-bold" font-size="14">Token-C</text>
+
+  <path d="M 690 260 Q 450 360 195 255" class="stroke-main" marker-end="url(#arrow)" />
+
+</svg>
