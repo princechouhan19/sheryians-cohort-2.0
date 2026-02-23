@@ -40,3 +40,6 @@ Output :- 2
 - [x] **Q60.** Capitalize first & last character of each word in the sentence and print the new sentence Ex :  Hello bhai Kaise ho a
 Output : HellO0 Bhal KaisfE HO A
 - [x] **Q61.** Accept a string and print the frequency of each character
+- [x] **Q62.** Check the two string are Anagram or not Anagrams words length & same character count . Ex - arc = car , state = taste , night = thing
+- [x] **leetcode** Maximum Number of Words found in Sentence
+- [x] **leetcode** Sort the word of sentence
