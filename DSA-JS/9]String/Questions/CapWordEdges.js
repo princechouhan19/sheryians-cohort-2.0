@@ -1,5 +1,5 @@
 // Q60. Capitalize first & last character of each word in the sentence and print the new sentence Ex :  Hello bhai Kaise ho a
-// Output : HellO0 Bhal KaisfE HO A
+// Output : HellO BhaI KaisE HO A
 
 /* s=hello
    s.charAt(0) h
