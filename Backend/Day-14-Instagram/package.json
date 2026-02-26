@@ -1,0 +1,19 @@
+{
+  "name": "day-14-instagram",
+  "version": "1.0.0",
+  "description": "-Features\r     1] Authentication\r         Register\r         login\r         logout (Token Blacklisting)\r         [otp based registeration]\r     2] Post\r         create\r         can see the feed \r         like posts (collections types)\r         save posts\r     3] User\r         following\r         followers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.2.2"
+  }
+}
