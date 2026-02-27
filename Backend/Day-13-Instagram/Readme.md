@@ -2,7 +2,7 @@
 
 ![Instagram Clone Banner](instagram_clone_banner.png)
 
-Welcome to the **Day 14** of the Backend Cohort! Today, we focused on building the core infrastructure for an Instagram-like application, focusing on robust authentication, media storage, and social features.
+Welcome to **Day 13** of the Backend Cohort! Today, we completed the second half of the Instagram Clone lecture, focusing on refactoring our code into a professional architecture using Controllers and finalizing the core infrastructure.
 
 ---
 
@@ -53,9 +53,25 @@ For profile pictures and post media, we are utilizing **[ImageKit.io](https://im
 
 ## 📝 Lecture Notes Summary
 
+- **Architecture (MVC)**: Transitioned to using **Controllers** to separate business logic from route definitions. This ensures that route files remain clean and only handle URIs and methods.
 - **Efficiency**: Using `$or` operators in Mongoose for single-query existence checks (checking both email and username simultaneously).
 - **Security**: Moving towards JWT-based authentication with proper blacklisting on logout.
 - **Schema Design**: Default profile images are hosted on ImageKit to ensure a consistent UI from day one.
+
+---
+
+## 🏗️ Architectural Pattern: Controllers
+
+In today's lecture, we learned the importance of **Separation of Concerns**. Instead of writing all the logic inside the route files, we moved it to a dedicated `controllers` folder.
+
+- **Route Files**: Define the paths (e.g., `/register`, `/login`) and the HTTP methods (GET, POST).
+- **Controller Files**: Contain the actual logic—talking to the database, hashing passwords, and generating tokens.
+
+**Benefits:**
+
+- **Cleaner Code**: Route files are much easier to read.
+- **Scalability**: As we add more features (Likes, Comments, Posts), the project stays organized.
+- **Reusability**: Logic can be decoupled and used in multiple places if needed.
 
 ---
 
@@ -63,6 +79,7 @@ For profile pictures and post media, we are utilizing **[ImageKit.io](https://im
 
 ```text
 src/
+├── controllers/ # Business logic (Register, Login, etc.)
 ├── models/      # Database schemas (User, Post)
 ├── routes/      # API endpoints (Auth, Post)
 ├── config/      # Database & Service configurations

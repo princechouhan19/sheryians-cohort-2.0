@@ -1,4 +1,5 @@
 const e = require("express");
+const mongoose = require("mongoose");
 const express = require("express");
 
 const userSchema = new mongoose.Schema({
