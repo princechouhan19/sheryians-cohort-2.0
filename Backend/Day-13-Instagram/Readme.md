@@ -16,7 +16,9 @@ Welcome to **Day 13** of the Backend Cohort! This session completed the second h
 
 ### 🖼️ 2. Post Management
 
-- **Create Post** — Accepts an image file (via `form-data`) and a caption, uploads the image to ImageKit, and stores the returned URL.
+- **Create Post** — Accepts an image file (via `form-data`) and a caption.
+- **JWT Authorization** — Securely identifies the user via tokens stored in cookies.
+- **ImageKit Folders** — Organized storage of media in specific project folders.
 - **Social Feed** — _(Planned)_ Dynamic timeline showing posts from followed users.
 - **Interactions** — _(Planned)_ Like and Save posts.
 
@@ -38,6 +40,7 @@ Welcome to **Day 13** of the Backend Cohort! This session completed the second h
 | `cookie-parser`    | Reading cookies from requests                  |
 | `multer`           | Parsing `multipart/form-data` for file uploads |
 | `@imagekit/nodejs` | Cloud image upload & delivery                  |
+| `dotenv`           | Managing environment variables (`.env`)        |
 
 ---
 
@@ -81,7 +84,7 @@ Day-13-Instagram/
     │   ├── auth.routes.js       # POST /api/auth/register  |  POST /api/auth/login
     │   └── post.routes.js       # POST /api/posts  (multer middleware applied here)
     └── config/
-        └── db.js                # MongoDB connection
+        └── database.js          # MongoDB connection
 ```
 
 ---
@@ -97,9 +100,9 @@ Day-13-Instagram/
 
 ### Post Routes — `/api/posts`
 
-| Method | Endpoint     | Body (form-data)          | Description                                  |
-| ------ | ------------ | ------------------------- | -------------------------------------------- |
-| `POST` | `/api/posts` | `caption`, `image` (file) | Create a new post, uploads image to ImageKit |
+| Method | Endpoint     | Body (form-data)          | Auth Required | Description                                  |
+| ------ | ------------ | ------------------------- | ------------- | -------------------------------------------- |
+| `POST` | `/api/posts` | `caption`, `image` (file) | **Yes (JWT)** | Create a new post, uploads image to ImageKit |
 
 ---
 
@@ -226,6 +229,58 @@ npm install @imagekit/nodejs
 
 - [ImageKit Node.js SDK Docs](https://github.com/imagekit-developer/imagekit-nodejs)
 - [All recommended docs by Ankur Bhaiya](https://github.com/ankurdotio/Difference-Backend-video/)
+
+---
+
+## 🔐 JWT Authorization & Scope Handling
+
+### 🛡️ Token-Based Authorization
+
+To ensure only logged-in users can create posts, we verify the **JWT** stored in the user's cookies. If the token is missing or invalid, the request is rejected.
+
+### 🧠 The "Scope Issue" in JavaScript
+
+When using `try-catch` blocks for operations like `jwt.verify()`, variables declared with `let` or `const` inside the `try` block are **block-scoped**. This means they cannot be accessed outside that block.
+
+**❌ Problem: Inner Scope Limitation**
+
+```js
+try {
+  const decoded = jwt.verify(token, secret);
+} catch (err) {
+  /* ... */
+}
+console.log(decoded); // ReferenceError: decoded is not defined
+```
+
+**✅ Solution: Declare outside, assign inside**
+
+By declaring the variable outside the `try` block, we ensure it is accessible to the rest of the function (e.g., when saving the post to the database).
+
+```js
+let decoded; // Declared in the function scope
+try {
+  decoded = jwt.verify(token, secret);
+} catch (err) {
+  /* handle error */
+}
+// Now 'decoded' is accessible here!
+```
+
+---
+
+## 📁 Organized Cloud Storage (ImageKit)
+
+To maintain a clean storage environment, we now specify a folder path during the upload process. Posts are organized under:
+`Cohort-20/Instagram-clone/Posts`
+
+```js
+const file = await imagekit.files.upload({
+  file: await toFile(Buffer.from(req.file.buffer), "file"),
+  fileName: "post-image",
+  folder: "Cohort-20/Instagram-clone/Posts", // 👈 Clean organization
+});
+```
 
 ---
 

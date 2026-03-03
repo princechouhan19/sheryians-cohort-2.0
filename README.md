@@ -76,6 +76,11 @@ A comprehensive journey through backend web development, covering everything fro
 - **[Day 5 & 6: Database](./Backend/Day-05-Database)**: Database fundamentals, schema design, and persistence.
 - **[Day 7: CRUD Operations](./Backend/Day-07-CRUD-Operations)**: Implementing Create, Read, Update, and Delete data flows.
 - **[Day 8: FullStack Project](./Backend/Day-08-FullStack)**: Combining frontend and backend components into a cohesive full-stack application.
+- **[Day 9: Authentication System](./Backend/Day-09-Authentication-System)**: Understanding AuthN vs AuthZ, Validation, and Verification concepts.
+- **[Day 10: JWT (Register Flow)](./Backend/Day-10-JWT)**: Implementing user registration with JWT and Cookies.
+- **[Day 11: Backend Security & Authentication](./Backend/Day-11-BcryptJS)**: Advanced security with BcryptJS, HTTP status codes, and secure cookie handling.
+- **[Day 12: Auth](./Backend/Day-12-Auth)**: Deep dive into Authentication patterns and creating protected routes.
+- **[Day 13: Instagram Clone (Backend)](./Backend/Day-13-Instagram)**: Professional MVC architecture, Multer file uploads, and ImageKit cloud storage integration.
 
 ### 🧠 [Data Structures & Algorithms (JavaScript)](./DSA-JS)
 
@@ -94,6 +99,19 @@ Core programming fundamentals and algorithmic problem-solving approaches powered
 ---
 
 ## Personal Learning Journey
+
+```markdown
+Before joining Cohort 2.0, I completed the **Sheryians Frontend Domination** batch. As a result, my primary focus in this repository is on:
+
+- **Backend Development**: Building robust server-side applications.
+- **Data Structures & Algorithms (DSA)**: Mastering algorithmic problem-solving.
+- **Generative AI**: Building AI-powered applications and agents.
+- **DevOps**: Streamlining deployment and infrastructure.
+
+*Note: Frontend projects and SCSS modules from Cohort 2.0 are maintained in my dedicated frontend repository rather than here.*
+```
+
+**Frontend Learning Repo:** [Sheryians Frontend Domination](https://github.com/princechouhan19/sheryians-frontend-domination)
 
 In this repository, you will find:
 
