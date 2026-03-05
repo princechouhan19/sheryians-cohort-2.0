@@ -321,6 +321,33 @@ if (!isValidUser) {
 
 ---
 
+---
+
+## 🏗️ Advanced Pattern: Edge Collections
+
+As discussed in today's lecture, when building scalable social systems like Instagram, we avoid storing "Followers" or "Following" as arrays inside the User document.
+
+### Why not arrays?
+
+- **Document Size**: MongoDB has a 16MB limit. Celebrities with millions of followers would break this.
+- **Performance**: High contention when multiple people follow/unfollow the same user simultaneously.
+- **Complexity**: Difficult to query "Mutual followers" or "Followers of followers".
+
+### The Solution: Edge Collections
+
+We create a separate collection (e.g., `Follows`) where each document represents a single "Edge" or relationship between two "Nodes" (Users).
+
+```js
+{
+  follower: ObjectId("user_A"),
+  following: ObjectId("user_B")
+}
+```
+
+This scales to millions of relationships and allows for complex graph-like queries.
+
+---
+
 ## 🐞 Known Issue: Postman File Upload Error
 
 ### The Error
@@ -351,6 +378,37 @@ After enabling this, `form-data` file uploads will work correctly.
 
 > [!NOTE]
 > The default profile image is hosted on ImageKit (`Default_user720.webp`) and set via the `default` field in the Mongoose schema. This ensures every new user has a valid avatar from day one.
+
+---
+
+## 🛡️ Refactoring: Auth Middleware
+
+To avoid repeating token verification logic across multiple controllers, we've implemented a centralized **Auth Middleware** (`identifyUser`).
+
+### How it works:
+
+1.  **Extracts Token**: Reads the JWT from `req.cookies.token`.
+2.  **Verifies JWT**: Uses `jwt.verify` to validate the session.
+3.  **Injects User**: Attaches the `decoded` payload (user ID, email, etc.) to the `req.user` object.
+4.  **Next Middleware**: Calls `next()` to pass control to the actual controller.
+
+```js
+// src/middlewares/auth.middleware.js
+async function identifyUser(req, res, next) {
+  const token = req.cookies.token;
+  if (!token) return res.status(401).json({ message: "Unauthorized" });
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded; // Now accessible in any controller!
+    next();
+  } catch (err) {
+    return res.status(401).json({ message: "Invalid Token" });
+  }
+}
+```
+
+This ensures our controllers remain lean and focused only on business logic.
 
 ---
 
