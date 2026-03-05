@@ -17,6 +17,8 @@ Welcome to **Day 13** of the Backend Cohort! This session completed the second h
 ### 🖼️ 2. Post Management
 
 - **Create Post** — Accepts an image file (via `form-data`) and a caption.
+- **Get User Posts** — Fetch all posts created by the authenticated user.
+- **Post Details** — Retrieve specific post details with strict ownership verification.
 - **JWT Authorization** — Securely identifies the user via tokens stored in cookies.
 - **ImageKit Folders** — Organized storage of media in specific project folders.
 - **Social Feed** — _(Planned)_ Dynamic timeline showing posts from followed users.
@@ -41,6 +43,18 @@ Welcome to **Day 13** of the Backend Cohort! This session completed the second h
 | `multer`           | Parsing `multipart/form-data` for file uploads |
 | `@imagekit/nodejs` | Cloud image upload & delivery                  |
 | `dotenv`           | Managing environment variables (`.env`)        |
+
+---
+
+## ⚙️ Environment Variables
+
+Create a `.env` file in the root directory and add the following:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+IMAGEKIT_PRIVATE_KEY=your_imagekit_private_key
+```
 
 ---
 
@@ -81,8 +95,8 @@ Day-13-Instagram/
     │   ├── user.model.js        # User schema (username, email, password, bio, profile_image)
     │   └── post.model.js        # Post schema
     ├── routes/
-    │   ├── auth.routes.js       # POST /api/auth/register  |  POST /api/auth/login
-    │   └── post.routes.js       # POST /api/posts  (multer middleware applied here)
+    │   ├── auth.routes.js       # Registration & Login
+    │   └── post.routes.js       # Create Post, Get User Posts, Post Details
     └── config/
         └── database.js          # MongoDB connection
 ```
@@ -100,9 +114,11 @@ Day-13-Instagram/
 
 ### Post Routes — `/api/posts`
 
-| Method | Endpoint     | Body (form-data)          | Auth Required | Description                                  |
-| ------ | ------------ | ------------------------- | ------------- | -------------------------------------------- |
-| `POST` | `/api/posts` | `caption`, `image` (file) | **Yes (JWT)** | Create a new post, uploads image to ImageKit |
+| Method | Endpoint                     | Body (form-data)          | Auth Required | Description                                      |
+| ------ | ---------------------------- | ------------------------- | ------------- | ------------------------------------------------ |
+| `POST` | `/api/posts`                 | `caption`, `image` (file) | **Yes (JWT)** | Create a new post, uploads image to ImageKit     |
+| `GET`  | `/api/posts`                 | -                         | **Yes (JWT)** | Fetch all posts of the logged-in user            |
+| `GET`  | `/api/posts/details/:postId` | -                         | **Yes (JWT)** | Get specific post details (with ownership check) |
 
 ---
 
@@ -280,6 +296,27 @@ const file = await imagekit.files.upload({
   fileName: "post-image",
   folder: "Cohort-20/Instagram-clone/Posts", // 👈 Clean organization
 });
+```
+
+---
+
+## 🔒 Post Ownership Verification
+
+When fetching a single post's details, it's crucial to verify if the post belongs to the requesting user. In MongoDB, IDs are stored as `ObjectIDs`. To compare them with the user ID from the JWT (which is a string), we must convert the post's user ID to a string or use Mongoose's `.equals()` method.
+
+```js
+const userId = decoded.id;
+const post = await postModel.findById(postId);
+
+// ❌ Comparison fails if types differ (Object vs String)
+// if (post.user == userId) { ... }
+
+// ✅ Correct way: Convert to string or use .equals()
+const isValidUser = post.user.toString() === userId;
+
+if (!isValidUser) {
+  return res.status(403).json({ message: "Forbidden Content" });
+}
 ```
 
 ---
