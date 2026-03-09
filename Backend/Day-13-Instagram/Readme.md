@@ -323,20 +323,22 @@ if (!isValidUser) {
 
 ---
 
-## 🏗️ Advanced Pattern: Edge Collections
+## 🏗️ Advanced Patterns: Edge Collections (Follows & Likes)
 
-As discussed in today's lecture, when building scalable social systems like Instagram, we avoid storing "Followers" or "Following" as arrays inside the User document.
+As discussed in the lecture, when building scalable social systems like Instagram, we avoid storing "Followers", "Following", or "Likes" as arrays inside the User/Post documents.
 
-### Why not arrays?
+### Why not use Arrays?
 
-- **Document Size**: MongoDB has a 16MB limit. Celebrities with millions of followers would break this.
-- **Performance**: High contention when multiple people follow/unfollow the same user simultaneously.
-- **Complexity**: Difficult to query "Mutual followers" or "Followers of followers".
+- **Document Size**: MongoDB has a 16MB limit. A post with millions of likes or a celebrity with millions of followers would break this.
+- **Performance**: High contention (locking) when multiple people interact with the same document simultaneously.
+- **Complexity**: Difficult to query relationships (e.g., "Do I follow this person?", "Mutual followers").
 
 ### The Solution: Edge Collections
 
-We create a separate collection (e.g., `Follows`) where each document represents a single "Edge" or relationship between two "Nodes" (Users).
+We create separate collections where each document represents a single "Edge" or relationship between two "Nodes" (User to User, or User to Post).
 
+#### 1. Follows Collection
+Represents the relationship between two users.
 ```js
 {
   follower: ObjectId("user_A"),
@@ -344,7 +346,18 @@ We create a separate collection (e.g., `Follows`) where each document represents
 }
 ```
 
-This scales to millions of relationships and allows for complex graph-like queries.
+#### 2. Likes Collection
+Represents the relationship between a user and a post.
+```js
+{
+  post: ObjectId("post_123"),
+  user: ObjectId("user_456"),
+  createdAt: ISODate("...")
+}
+```
+
+This architecture scales seamlessly to millions of interactions and allows for high-performance graph-like queries.
+
 
 ---
 
@@ -412,4 +425,18 @@ This ensures our controllers remain lean and focused only on business logic.
 
 ---
 
-Made with ❤️ by Prince Chouhan
+## 🛡️ Validation Strategy: Multi-Layer Security
+
+To ensure data integrity and prevent malicious input, we implement validation across multiple layers:
+
+### Backend Validation (The Source of Truth)
+1. **Express Validator (Layer 1)**: Early detection of invalid data types, missing fields, or incorrect formats at the route level.
+2. **Controller/Service Layer (Layer 2)**: Business-specific validation (e.g., checking if a user already exists or verifying ownership of a post).
+3. **Database Schema (Layer 3)**: The final safeguard. Mongoose schemas enforce data types, unique constraints, and required fields before data is committed to MongoDB.
+
+### Frontend Validation (The UX Layer)
+- **Client-Side Checks**: Used for instant user feedback. However, we **never** depend on this for security because it can be easily bypassed. The backend remains the final gatekeeper.
+
+---
+
+Made with ❤️ by Prince Chouhan
