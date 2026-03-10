@@ -1,6 +1,6 @@
 # 📸 Instagram Clone - Backend Development
 
-![Instagram Clone Banner](instagram_clone_banner.png)
+![Instagram Clone Banner](instagram_backend_banner.png)
 
 Welcome to **Day 13** of the Backend Cohort! This session completed the second half of the Instagram Clone lecture. We focused on refactoring the project into a professional **MVC architecture** using Controllers, integrating **Multer** for file uploads, and connecting **ImageKit** for cloud-based media storage.
 
