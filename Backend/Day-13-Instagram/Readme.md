@@ -119,6 +119,7 @@ Day-13-Instagram/
 | `POST` | `/api/posts`                 | `caption`, `image` (file) | **Yes (JWT)** | Create a new post, uploads image to ImageKit     |
 | `GET`  | `/api/posts`                 | -                         | **Yes (JWT)** | Fetch all posts of the logged-in user            |
 | `GET`  | `/api/posts/details/:postId` | -                         | **Yes (JWT)** | Get specific post details (with ownership check) |
+| `PATCH` | `/api/users/followers/respond/:username` | `status` | **Yes (JWT)** | Accept or reject a follow request                 |
 
 ---
 
@@ -385,9 +386,15 @@ Represents the relationship between two users.
 ```js
 {
   follower: ObjectId("user_A"),
-  following: ObjectId("user_B")
+  following: ObjectId("user_B"),
+  status: "pending" // Default status is 'pending'
 }
 ```
+
+The `status` field can take one of the following values:
+- `pending`: The default state when a follow request is sent.
+- `accepted`: The relationship is confirmed.
+- `rejected`: The follow request was denied.
 
 #### 2. Likes Collection
 
@@ -427,6 +434,32 @@ This is a **Postman security restriction** — not a backend issue. Postman bloc
 4. Restart Postman
 
 After enabling this, `form-data` file uploads will work correctly.
+
+---
+
+## 🏗️ Implementation: Responding to Follow Requests
+
+The `respondToFollowRequestUserController` handles the logic for accepting or rejecting a pending follow request.
+
+### Key Logic:
+1. **Identify the Recipient**: The logged-in user is the one who received the request (`followingUsername`).
+2. **Identify the Sender**: The username passed in `req.params` is the one who sent the request (`followerUsername`).
+3. **Validate Status**: Ensures the provided status in `req.body` is either `accepted` or `rejected`.
+4. **Find Pending Request**: Searches for a record in the `followModel` where `follower` is the sender, `following` is the recipient, and the current status is `pending`.
+5. **Update and Save**: If found, updates the status and saves the record.
+
+```js
+const followRequest = await followModel.findOne({
+  follower: followerUsername,
+  following: followingUsername,
+  status: "pending",
+});
+
+if (followRequest) {
+  followRequest.status = status;
+  await followRequest.save();
+}
+```
 
 ---
 
