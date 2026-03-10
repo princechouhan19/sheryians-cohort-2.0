@@ -18,4 +18,12 @@ userRouter.post("/follow/:username" , identifyUser ,userController.followUserCon
 */
 userRouter.delete("/unfollow/:username" , identifyUser , userController.unfollowUserController)
 
+/*
+    @route PATCH /api/users/followers/respond/:userid
+    @description Accept or reject a follow request
+    @access Private
+*/
+userRouter.patch("/followers/respond/:username" , identifyUser , userController.respondToFollowRequestUserController)
+
+
 module.exports = userRouter;

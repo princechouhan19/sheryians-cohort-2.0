@@ -246,6 +246,19 @@ npm install @imagekit/nodejs
 - [ImageKit Node.js SDK Docs](https://github.com/imagekit-developer/imagekit-nodejs)
 - [All recommended docs by Ankur Bhaiya](https://github.com/ankurdotio/Difference-Backend-video/)
 
+## 📁 Organized Cloud Storage (ImageKit)
+
+To maintain a clean storage environment, we now specify a folder path during the upload process. Posts are organized under:
+`Cohort-20/Instagram-clone/Posts`
+
+```js
+const file = await imagekit.files.upload({
+  file: await toFile(Buffer.from(req.file.buffer), "file"),
+  fileName: "post-image",
+  folder: "Cohort-20/Instagram-clone/Posts", // 👈 Clean organization
+});
+```
+
 ---
 
 ## 🔐 JWT Authorization & Scope Handling
@@ -285,20 +298,34 @@ try {
 
 ---
 
-## 📁 Organized Cloud Storage (ImageKit)
+## 🛡️ Refactoring: Auth Middleware
 
-To maintain a clean storage environment, we now specify a folder path during the upload process. Posts are organized under:
-`Cohort-20/Instagram-clone/Posts`
+To avoid repeating token verification logic across multiple controllers, we've implemented a centralized **Auth Middleware** (`identifyUser`).
+
+### How it works:
+
+1.  **Extracts Token**: Reads the JWT from `req.cookies.token`.
+2.  **Verifies JWT**: Uses `jwt.verify` to validate the session.
+3.  **Injects User**: Attaches the `decoded` payload (user ID, email, etc.) to the `req.user` object.
+4.  **Next Middleware**: Calls `next()` to pass control to the actual controller.
 
 ```js
-const file = await imagekit.files.upload({
-  file: await toFile(Buffer.from(req.file.buffer), "file"),
-  fileName: "post-image",
-  folder: "Cohort-20/Instagram-clone/Posts", // 👈 Clean organization
-});
+// src/middlewares/auth.middleware.js
+async function identifyUser(req, res, next) {
+  const token = req.cookies.token;
+  if (!token) return res.status(401).json({ message: "Unauthorized" });
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded; // Now accessible in any controller!
+    next();
+  } catch (err) {
+    return res.status(401).json({ message: "Invalid Token" });
+  }
+}
 ```
 
----
+This ensures our controllers remain lean and focused only on business logic.
 
 ## 🔒 Post Ownership Verification
 
@@ -321,6 +348,20 @@ if (!isValidUser) {
 
 ---
 
+## 🛡️ Validation Strategy: Multi-Layer Security
+
+To ensure data integrity and prevent malicious input, we implement validation across multiple layers:
+
+### Backend Validation (The Source of Truth)
+
+1. **Express Validator (Layer 1)**: Early detection of invalid data types, missing fields, or incorrect formats at the route level.
+2. **Controller/Service Layer (Layer 2)**: Business-specific validation (e.g., checking if a user already exists or verifying ownership of a post).
+3. **Database Schema (Layer 3)**: The final safeguard. Mongoose schemas enforce data types, unique constraints, and required fields before data is committed to MongoDB.
+
+### Frontend Validation (The UX Layer)
+
+- **Client-Side Checks**: Used for instant user feedback. However, we **never** depend on this for security because it can be easily bypassed. The backend remains the final gatekeeper.
+
 ---
 
 ## 🏗️ Advanced Patterns: Edge Collections (Follows & Likes)
@@ -338,7 +379,9 @@ As discussed in the lecture, when building scalable social systems like Instagra
 We create separate collections where each document represents a single "Edge" or relationship between two "Nodes" (User to User, or User to Post).
 
 #### 1. Follows Collection
+
 Represents the relationship between two users.
+
 ```js
 {
   follower: ObjectId("user_A"),
@@ -347,7 +390,9 @@ Represents the relationship between two users.
 ```
 
 #### 2. Likes Collection
+
 Represents the relationship between a user and a post.
+
 ```js
 {
   post: ObjectId("post_123"),
@@ -357,7 +402,6 @@ Represents the relationship between a user and a post.
 ```
 
 This architecture scales seamlessly to millions of interactions and allows for high-performance graph-like queries.
-
 
 ---
 
@@ -392,51 +436,4 @@ After enabling this, `form-data` file uploads will work correctly.
 > [!NOTE]
 > The default profile image is hosted on ImageKit (`Default_user720.webp`) and set via the `default` field in the Mongoose schema. This ensures every new user has a valid avatar from day one.
 
----
-
-## 🛡️ Refactoring: Auth Middleware
-
-To avoid repeating token verification logic across multiple controllers, we've implemented a centralized **Auth Middleware** (`identifyUser`).
-
-### How it works:
-
-1.  **Extracts Token**: Reads the JWT from `req.cookies.token`.
-2.  **Verifies JWT**: Uses `jwt.verify` to validate the session.
-3.  **Injects User**: Attaches the `decoded` payload (user ID, email, etc.) to the `req.user` object.
-4.  **Next Middleware**: Calls `next()` to pass control to the actual controller.
-
-```js
-// src/middlewares/auth.middleware.js
-async function identifyUser(req, res, next) {
-  const token = req.cookies.token;
-  if (!token) return res.status(401).json({ message: "Unauthorized" });
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // Now accessible in any controller!
-    next();
-  } catch (err) {
-    return res.status(401).json({ message: "Invalid Token" });
-  }
-}
-```
-
-This ensures our controllers remain lean and focused only on business logic.
-
----
-
-## 🛡️ Validation Strategy: Multi-Layer Security
-
-To ensure data integrity and prevent malicious input, we implement validation across multiple layers:
-
-### Backend Validation (The Source of Truth)
-1. **Express Validator (Layer 1)**: Early detection of invalid data types, missing fields, or incorrect formats at the route level.
-2. **Controller/Service Layer (Layer 2)**: Business-specific validation (e.g., checking if a user already exists or verifying ownership of a post).
-3. **Database Schema (Layer 3)**: The final safeguard. Mongoose schemas enforce data types, unique constraints, and required fields before data is committed to MongoDB.
-
-### Frontend Validation (The UX Layer)
-- **Client-Side Checks**: Used for instant user feedback. However, we **never** depend on this for security because it can be easily bypassed. The backend remains the final gatekeeper.
-
----
-
-Made with ❤️ by Prince Chouhan
+Made with ❤️ by Prince Chouhan
