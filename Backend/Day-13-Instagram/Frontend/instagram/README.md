@@ -138,6 +138,29 @@ const api = axios.create({
 });
 ```
 
+React Architecture Notes :- D:\SHERINAS\Cohort2.0\Backend\Day-13-Instagram\Frontend\instagram\react-architecture.md 
+
+Backend Contact 
+    X not in ui file 
+    const handleSubmit = (e) => {
+    e.preventDefault();
+
+    axios.post("http://localhost:3000/api/auth/login", {
+      username,
+      password
+    }, {
+      withCredentials: true
+    })
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
+  make services folder then in auth folder make auth.api.js file and export it 
+
 ---
 
 > [!TIP]

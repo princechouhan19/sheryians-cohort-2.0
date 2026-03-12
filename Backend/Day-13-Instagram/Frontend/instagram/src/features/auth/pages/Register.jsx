@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../style/form.scss'
 import { Link } from 'react-router'
-import axios from 'axios'
-import { useState } from 'react'
+import { useAuth } from '../hooks/useAuth'
 
 const Register = () => {
 
@@ -11,19 +10,15 @@ const Register = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  const { handleRegister } = useAuth()
+
   //handle submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.post("http://localhost:3000/api/auth/register", {
-      username,
-      email,
-      password
-    }, {
-      withCredentials: true
-    })
+    handleRegister(username, email, password)
       .then((res) => {
-        console.log(res.data)
+        console.log(res)
       })
       .catch((err) => {
         console.log(err)

@@ -1,6 +1,7 @@
 const express = require("express");
 const authRouter = express.Router();
 const authController = require("../controllers/auth.controller");
+const identifyUser = require("../middlewares/auth.middleware");
 
 /*
     @routes POST api/auth/register [public]
@@ -18,4 +19,10 @@ authRouter.post("/register", authController.registerController);
 */
 authRouter.post("/login", authController.loginController);
 
+/*
+    @routes GET api/auth/get-me [private]
+    @description get current user
+    @res = {message:"User fetched successfully"}
+*/
+authRouter.get("/get-me", identifyUser , authController.getMeController);
 module.exports = authRouter;
